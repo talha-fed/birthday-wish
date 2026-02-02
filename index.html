@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+    body{
+      height:100vh;
+      background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .card{
+      background:rgba(255,255,255,0.25);
+      backdrop-filter:blur(12px);
+      border-radius:25px;
+      padding:40px;
+      width:90%;
+      max-width:420px;
+      text-align:center;
+      color:#fff;
+      box-shadow:0 20px 40px rgba(0,0,0,0.25);
+      animation:fadeIn 1.5s ease;
+    }
+    h1{font-family:'Pacifico',cursive;font-size:2.4rem;margin-bottom:10px}
+    h2{font-size:1.1rem;font-weight:300;margin-bottom:20px}
+    .message{font-size:1rem;line-height:1.6;margin-bottom:25px}
+    button{
+      padding:12px 25px;
+      border:none;
+      border-radius:30px;
+      background:#ff4d6d;
+      color:white;
+      font-size:1rem;
+      cursor:pointer;
+      transition:0.3s
+    }
+    button:hover{background:#ff1e4d;transform:scale(1.05)}
+    .hidden{display:none}
+
+    /* Cake */
+    .cake{margin:30px auto;position:relative;width:160px}
+    .cake-base{width:160px;height:100px;background:#ffb3c6;border-radius:0 0 20px 20px}
+    .cake-top{width:160px;height:40px;background:#ffc2d1;border-radius:20px 20px 0 0}
+    .candle{width:10px;height:35px;background:white;margin:0 auto}
+    .flame{width:14px;height:14px;background:orange;border-radius:50%;margin:0 auto;animation:flicker 0.6s infinite alternate}
+    @keyframes flicker{from{transform:scale(1)}to{transform:scale(1.2)}}
+    @keyframes fadeIn{from{opacity:0;transform:scale(0.9)}to{opacity:1;transform:scale(1)}}
+  </style>
+</head>
+<body>
+
+  <!-- PAGE 1 -->
+  <div class="card" id="page1">
+    <h1>Happy Birthday 🎉</h1>
+    <h2>My Love ❤️</h2>
+    <p class="message" id="msg">Today is not just your birthday, it's the day my world became brighter ✨</p>
+    <button onclick="nextMessage()">Next 💝</button>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="card hidden" id="page2">
+    <h1>Make a Wish 🎂</h1>
+    <p class="message">Close your eyes… now blow the candle 🌬️</p>
+
+    <div class="cake">
+      <div class="flame" id="flame"></div>
+      <div class="candle"></div>
+      <div class="cake-top"></div>
+      <div class="cake-base"></div>
+    </div>
+
+    <button onclick="blowCandle()">Blow Candle 🌬️</button>
+  </div>
+
+<script>
+  const messages = [
+    "You are my favorite reason to smile every day 💕",
+    "Life feels magical with you by my side ✨",
+    "I promise to love you today, tomorrow, and always ❤️",
+    "Thank you for being you - my happiest place 🌸",
+    "One last thing before your surprise… 💖"
+  ];
+  let i = 0;
+
+  function nextMessage(){
+    if(i < messages.length){
+      document.getElementById('msg').innerText = messages[i];
+      i++;
+    } else {
+      document.getElementById('page1').classList.add('hidden');
+      document.getElementById('page2').classList.remove('hidden');
+    }
+  }
+
+  function blowCandle(){
+    document.getElementById('flame').style.display = 'none';
+    setTimeout(()=>{
+      alert('🎉 Wish Granted! Happy Birthday My Love 💖');
+    },400);
+  }
+</script>
+
+</body>
+</html>
